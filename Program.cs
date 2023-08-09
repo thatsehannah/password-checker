@@ -6,6 +6,11 @@ namespace PasswordChecker
     {
         static int passwordValidator(string password)
         {
+            if (password == null)
+            {
+                return 0;
+            }
+
             int score = 0;
 
             int minLength = 8;
@@ -44,6 +49,27 @@ namespace PasswordChecker
 
         public static void Main(string[] args)
         {
+            Console.Write("Enter your password: ");
+            int score = passwordValidator(Console.ReadLine());
+
+            switch (score)
+            {
+                case 4: case 5:
+                    Console.WriteLine("Password is extremely strong");
+                    break;
+                case 3:
+                    Console.WriteLine("Password is strong");
+                    break;
+                case 2:
+                    Console.WriteLine("Password is medium");
+                    break;
+                case 1:
+                    Console.WriteLine("Password is weak");
+                    break;
+                default:
+                    Console.WriteLine("Password doesn't meet any of the standards");
+                    break;
+            }
 
         }
     }
